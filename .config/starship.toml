@@ -1,0 +1,57 @@
+format = """\
+${custom.datetime} $directory $username$hostname $git_branch
+$character """
+
+# [custom.draw_line]
+# command = "printf %\"$((COLUMNS-1))\"s | tr ' ' '─'"
+# when = "true"
+# format = '$symbol($output)'
+# disabled = false
+
+[custom.datetime]
+command = "date +'%F (%T)'"
+when = "true"
+format = '[$symbol($output)](bold)'
+
+[time]
+disabled = false
+format = '[›](dimmed) [$time]($style)'
+style = "bold"
+time_format = "%T"
+utc_time_offset = "+2"
+
+[username]
+style_user = "bold cyan"
+format = "[›](dimmed) [$user]($style)"
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = false
+style = "bold cyan"
+format = "[~@$hostname]($style)"
+
+[directory]
+truncation_length = 10
+truncate_to_repo = false
+truncation_symbol = "…/"
+read_only_style = "bold red"
+style = "bold yellow"
+home_symbol = "~"
+format = "[›](dimmed) $read_only[$path]($style)"
+
+[git_branch]
+always_show_remote = true
+symbol = "\uE0A0"
+truncation_length = 124
+truncation_symbol = ""
+style = "bold green"
+format = "[›](dimmed) [$symbol$branch]($style)"
+
+[shell]
+format = "[powered by $indicator](dimmed)"
+disabled = false
+
+[character]
+success_symbol = "[⟶](bold bright-green)"
+error_symbol = "[⟶](bold bright-red)"
