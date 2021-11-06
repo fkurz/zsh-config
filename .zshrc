@@ -1,3 +1,5 @@
+neofetch
+
 #
 # 1. paths
 #
@@ -19,11 +21,12 @@ export TEXMF_DIR="/Users/main/Library/texmf/tex/latex"
 export PATH="$PATH:/Users/main/.cargo/bin"
 
 # --- isabelle --- #
-export ISABELLE_VERSION=Isabelle2021
-export PATH="${PATH}:/Applications/${ISABELLE_VERSION}/bin"
+export ISABELLE_VERSION=2021
+export ISABELLE_HOME="$(brew --prefix)/Caskroom/isabelle/${ISABELLE_VERSION}/Isabelle${ISABELLE_VERSION}.app"
+export PATH="${ISABELLE_HOME}/bin:${PATH}"
 
 # --- VS Code --- #
-export VS_CODE_HOME="/Users/friedrichk/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin"
+export VS_CODE_HOME="/Users/main/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin"
 export VS_CODE_BIN="${VS_CODE_HOME}/Contents/Resources/app/bin"
 export PATH="${PATH}:${VS_CODE_BIN}"
 
@@ -35,6 +38,15 @@ export PATH="${PATH}:${TEX_BIN}"
 export SDKROOT=$(xcrun --show-sdk-path)
 export RUBY_VERSION=3.0.1
 export PATH="${PATH}:${HOME}/.rbenv/versions/${RUBY_VERSION}/bin"
+
+# --- Python --- #
+export PYTHON_VERSION=3.9
+alias python3="$(brew --prefix python@${PYTHON_VERSION})/bin/python${PYTHON_VERSION}"
+alias python=python3
+alias pip3="$(brew --prefix python@${PYTHON_VERSION})/bin/pip${PYTHON_VERSION}"
+alias pip=pip3
+# Add executables installed by pip3 to path
+export PATH="${HOME}/Library/Python/${PYTHON_VERSION}/bin:${PATH}" 
 
 #
 # 2. aliases
@@ -132,7 +144,7 @@ export ZSH="/Users/main/.oh-my-zsh"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-# plugins=(git)
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export ZSH_DISABLE_COMPFIX=true
 source $ZSH/oh-my-zsh.sh
