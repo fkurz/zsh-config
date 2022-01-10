@@ -214,6 +214,9 @@ export NODE_VERSION="lts/fermium"
 printf "\n" 
 nvm install "${NODE_VERSION}"
 
+# -- List available and recommended software updates -- #
+softwareupdate -lr
+
 # --- sdkman --- #
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/main/.sdkman"
