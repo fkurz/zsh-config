@@ -214,8 +214,12 @@ export NODE_VERSION="lts/fermium"
 printf "\n" 
 nvm install "${NODE_VERSION}"
 
-# -- List available and recommended software updates -- #
-softwareupdate -lr
+
+# -- tldr -- #
+tldr --update
+
+# -- brew -- #
+brew upgrade
 
 # --- sdkman --- #
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
